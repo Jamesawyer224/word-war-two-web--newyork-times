@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dark Era: WWII – A Historical Exploration</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            padding: 0 20px;
+            text-align: justify;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .toggle-button:hover {
+            background-color: #555;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100px;
+            height: auto;
+            vertical-align: middle;
+            margin: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        /* Slideshow Gallery */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .caption {
+            font-size: 18px;
+            color: #ddd;
+            margin: 10px 0;
+        }
+
+        /* Navigation Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: background-color 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* Music Button Styling */
+        .music-button {
+            background-color: #444;
+            color: white;
+            padding: 15px 30px;
+            margin: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .music-button:hover {
+            background-color: #666;
+        }
+
+        /* Additional Styling */
+        .logo {
+            width: 100px;
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="toggle-container">
+        <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="https://www.shutterstock.com/image-vector/adolf-hitler-nazi-commander-logo-icon-2282717799" alt="Nazi Logo">
+        <h1>The Dark Era: WWII – A Historical Exploration</h1>
+        <img src="https://qph.cf2.quoracdn.net/main-qimg-47f387c7fee686102944f961ad724097" alt="Additional Logo">
+    </div>
+
+    <!-- Slideshow Gallery -->
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="https://www.shutterstock.com/image-photo/washington-dc-dec-19-internal-view-473667163" alt="Washington D.C.">
+            <div class="caption">Washington D.C. - December 19</div>
+        </div>
+        <div class="slide fade">
+            <img src="https://www.shutterstock.com/image-photo/london-united-kingdom-february-4-2017-574590142" alt="London">
+            <div class="caption">London - February 4, 2017</div>
+        </div>
+        <div class="slide fade">
+            <img src="https://www.shutterstock.com/image-photo/hong-kong-20-oct-2019-protestors-1549764902" alt="Hong Kong">
+            <div class="caption">Hong Kong - October 20, 2019</div>
+        </div>
+        <div class="slide fade">
+            <img src="https://www.shutterstock.com/image-photo/prague-czech-republic-june-29-2015-308245205" alt="Prague">
+            <div class="caption">Prague - June 29, 2015</div>
+        </div>
+        <div class="slide fade">
+            <img src="https://www.shutterstock.com/image-photo/nuremberg-germany-february-18-2024-old-2427039645" alt="Nuremberg">
+            <div class="caption">Nuremberg - February 18, 2024</div>
+        </div>
+        <div class="slide fade">
+            <img src="https://www.shutterstock.com/image-photo/krakow-poland-february-19-swastika-flag-1040625286" alt="Krakow">
+            <div class="caption">Krakow - February 19</div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!-- Music Player -->
+    <button class="music-button" onclick="toggleMusic()">Play WWII Music</button>
+
+    <!-- JavaScript -->
+    <script>
+        let slideIndex = 0;
+        let musicPlaying = false;
+        const slides = document.querySelectorAll(".slide");
+        const music = new Audio('ww2.mp3');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.style.display = index === slideIndex ? 'block' : 'none';
+            });
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlides();
+        }
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+            } else {
+                music.play();
+                musicPlaying = true;
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        showSlides();
+        setInterval(() => plusSlides(1), 5000); // Change slide every 5 seconds
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World War II Interactive Experience</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styling */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #eaeaea;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        .hero {
+            background-image: url('https://example.com/ww2-hero.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .timeline-event {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            text-align: left;
+        }
+
+        .timeline-event.left {
+            left: 0;
+        }
+
+        .timeline-event.right {
+            left: 50%;
+        }
+
+        .button-container button {
+            background-color: #333;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .button-container button:hover {
+            background-color: #555;
+        }
+
+        .map-container {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .map-point {
+            position: absolute;
+            background-color: red;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .info-box {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 200px;
+            z-index: 10;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        /* Responsive Video Styling */
+        .video-container {
+            max-width: 800px; /* Adjust max-width to your liking */
+            margin: 0 auto; /* Center the video container */
+        }
+
+        .embed-responsive {
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .embed-responsive iframe,
+        .embed-responsive video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="fixed-top p-3">
+        <button class="btn btn-dark" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>The Story of World War II</h1>
+    </div>
+
+    <!-- Nazi German Army Section -->
+    <div class="container my-5">
+        <h2>Nazi German Army and Their Technology</h2>
+        <p>The Nazi German army, also known as the Wehrmacht, was one of the most technologically advanced military forces during World War II. The Wehrmacht's use of innovative strategies and cutting-edge technology played a significant role in their early successes during the war. The Blitzkrieg tactic, which combined rapid movement of infantry, tanks, and air support, allowed them to conquer large swathes of Europe in a short period. The Wehrmacht was equipped with some of the most advanced tanks, including the Panzer IV and the Tiger tank, which were known for their firepower and armor. Additionally, the Luftwaffe, the aerial warfare branch of the Wehrmacht, was equipped with state-of-the-art aircraft such as the Messerschmitt Bf 109 and the Focke-Wulf Fw 190, dominating the skies in the early years of the war.</p>
+    </div>
+
+    <!-- Video Content Section -->
+    <div class="container my-5 video-container">
+        <h2>Power of Nazi Technology</h2>
+        <div class="embed-responsive">
+            <video class="embed-responsive-item" controls>
+                <source src="ww2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="container my-5">
+        <div class="timeline">
+            <div class="timeline-event left">
+                <h3>1939: The Beginning</h3>
+                <p>World War II begins with Germany's invasion of Poland on September 1st. The UK and France declare war on Germany.</p>
+            </div>
+            <div class="timeline-event right">
+                <h3>1941: Pearl Harbor</h3>
+                <p>The United States enters the war after Japan's attack on Pearl Harbor on December 7th.</p>
+            </div>
+            <div class="timeline-event left">
+                <h3>1944: D-Day</h3>
+                <p>D-Day, the Allied invasion of Normandy, occurs on June 6th, marking a turning point in the war.</p>
+            </div>
+            <div class="timeline-event right">
+                <h3>1945: The End</h3>
+                <p>Germany surrenders on May 7th, and Japan surrenders on September 2nd, officially ending the war.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Map Section -->
+    <div class="container my-5">
+        <h2>Key Locations of World War II</h2>
+        <div class="map-container">
+            <img src="https://example.com/ww2-map.jpg" alt="World War II Map" class="map img-fluid">
+            <div class="map-point" style="top: 50%; left: 50%;" onmouseover="showInfo(event, 'Battle of Stalingrad')" onmouseout="hideInfo()">
+                <div class="info-box">
+                    <p>Battle of Stalingrad (1942-1943): A pivotal Soviet victory that marked the decline of the Axis in Europe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music and Gallery Buttons -->
+    <div class="button-container">
+        <button class="btn btn-danger" onclick="playMusic()">War Music</button>
+        <button class="btn btn-warning" onclick="showGallery()">War Image Gallery</button>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="war-music">
+        <source src="ww2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Dark Mode Toggle Script
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Music Play Script
+        function playMusic() {
+            var music = document.getElementById('war-music');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        // Show Gallery Script
+        function showGallery() {
+            // Implement gallery display logic
+        }
+
+        // Show Info Box on Map
+        function showInfo(event, text) {
+            var infoBox = event.target.querySelector('.info-box');
+            infoBox.style.display = 'block';
+        }
+
+        function hideInfo() {
+            var infoBox = document.querySelector('.info-box');
+            infoBox.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

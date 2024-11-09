@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World War II Interactive Experience</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- UIkit CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/uikit@3.15.4/dist/css/uikit.min.css" rel="stylesheet">
+
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .hero {
+            background-image: url('https://example.com/ww2-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .high-quality-frame {
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-container button {
+            background-color: #333;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .button-container button:hover {
+            background-color: #555;
+        }
+
+        .timeline-event {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            text-align: left;
+        }
+
+        .timeline-event.left {
+            left: 0;
+        }
+
+        .timeline-event.right {
+            left: 50%;
+        }
+
+        .map-container {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .map {
+            max-width: 100%;
+            border: 2px solid #333;
+        }
+
+        .map-point {
+            position: absolute;
+            background-color: red;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .info-box {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 200px;
+            z-index: 10;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        /* Dark Mode Toggle Styling */
+        .dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .toggle-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="toggle-container">
+        <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>The Story of World War II</h1>
+    </div>
+
+    <!-- Nazi German Army Section with High-Quality Frame -->
+    <div class="container my-5">
+        <h2>Nazi German Army and Their Technology</h2>
+        <div class="high-quality-frame">
+            <p>The Nazi German army, also known as the Wehrmacht, was one of the most technologically advanced military forces during World War II. The Wehrmacht's use of innovative strategies and cutting-edge technology played a significant role in their early successes during the war. The Blitzkrieg tactic, which combined rapid movement of infantry, tanks, and air support, allowed them to conquer large swathes of Europe in a short period. The Wehrmacht was equipped with some of the most advanced tanks, including the Panzer IV and the Tiger tank, which were known for their firepower and armor. Additionally, the Luftwaffe, the aerial warfare branch of the Wehrmacht, was equipped with state-of-the-art aircraft such as the Messerschmitt Bf 109 and the Focke-Wulf Fw 190, dominating the skies in the early years of the war.</p>
+        </div>
+    </div>
+
+    <!-- Video Content Section (Smartly Integrated) -->
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title text-center">Power of Nazi Technology</h3>
+                <p class="card-text text-center">Explore the advanced technology that fueled the Nazi war machine during World War II.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="ww2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="container my-5">
+        <div class="timeline">
+            <div class="timeline-event left">
+                <h3>1939: The Beginning</h3>
+                <p>World War II begins with Germany's invasion of Poland on September 1st. The UK and France declare war on Germany.</p>
+            </div>
+            <div class="timeline-event right">
+                <h3>1941: Pearl Harbor</h3>
+                <p>The United States enters the war after Japan's attack on Pearl Harbor on December 7th.</p>
+            </div>
+            <div class="timeline-event left">
+                <h3>1944: D-Day</h3>
+                <p>D-Day, the Allied invasion of Normandy, occurs on June 6th, marking a turning point in the war.</p>
+            </div>
+            <div class="timeline-event right">
+                <h3>1945: The End</h3>
+                <p>Germany surrenders on May 7th, and Japan surrenders on September 2nd, officially ending the war.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Map Section -->
+    <div class="container my-5">
+        <h2>Key Locations of World War II</h2>
+        <div class="map-container">
+            <img src="https://example.com/ww2-map.jpg" alt="World War II Map" class="map img-fluid">
+            <div class="map-point" style="top: 50%; left: 50%;" onmouseover="showInfo(event, 'Battle of Stalingrad')" onmouseout="hideInfo()">
+                <div class="info-box">
+                    <p>Battle of Stalingrad (1942-1943): A pivotal Soviet victory that marked the decline of the Axis in Europe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music and Gallery Buttons -->
+    <div class="container my-5 text-center">
+        <button class="btn btn-danger" onclick="playMusic()">Play War Music</button>
+        <button class="btn btn-warning" onclick="showGallery()">View War Image Gallery</button>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="war-music">
+        <source src="ww2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.4/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.4/dist/js/uikit-icons.min.js"></script>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function playMusic() {
+            const audio = document.getElementById('war-music');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function showGallery() {
+            alert('Gallery functionality is not yet implemented.');
+        }
+
+        function showInfo(event, text) {
+            const infoBox = event.target.querySelector('.info-box');
+            infoBox.style.display = 'block';
+            infoBox.textContent = text;
+        }
+
+        function hideInfo() {
+            const infoBoxes = document.querySelectorAll('.info-box');
+            infoBoxes.forEach(box => box.style.display = 'none');
+        }
+    </script>
+</body>
+
+</html>
+

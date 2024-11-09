@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dark Era: WWII – A Historical Exploration</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Bulma CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" rel="stylesheet">
+    <!-- Semantic UI CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            padding: 0 20px;
+            text-align: justify;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .toggle-button:hover {
+            background-color: #555;
+        }
+
+        .hero {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100px;
+            height: auto;
+            vertical-align: middle;
+            margin: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .caption {
+            font-size: 18px;
+            color: #ddd;
+            margin: 10px 0;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: background-color 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .music-button {
+            background-color: #444;
+            color: white;
+            padding: 15px 30px;
+            margin: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .music-button:hover {
+            background-color: #666;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-gallery img {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="toggle-container">
+        <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="https://www.shutterstock.com/image-vector/adolf-hitler-nazi-commander-logo-icon-2282717799" alt="Nazi Logo">
+        <h1>The Dark Era: WWII – A Historical Exploration</h1>
+        <img src="https://qph.cf2.quoracdn.net/main-qimg-47f387c7fee686102944f961ad724097" alt="Additional Logo">
+    </div>
+
+    <!-- Slideshow Gallery -->
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="ww2_1.jpg" alt="WWII Image 1">
+            <div class="caption">WWII Image 1</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_2.jpg" alt="WWII Image 2">
+            <div class="caption">WWII Image 2</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_3.jpg" alt="WWII Image 3">
+            <div class="caption">WWII Image 3</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_4.jpg" alt="WWII Image 4">
+            <div class="caption">WWII Image 4</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_5.jpg" alt="WWII Image 5">
+            <div class="caption">WWII Image 5</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_6.jpg" alt="WWII Image 6">
+            <div class="caption">WWII Image 6</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_7.jpg" alt="WWII Image 7">
+            <div class="caption">WWII Image 7</div>
+        </div>
+        <div class="slide fade">
+            <img src="ww2_8.jpg" alt="WWII Image 8">
+            <div class="caption">WWII Image 8</div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!-- Music Player -->
+    <button class="music-button" onclick="toggleMusic()">Play WWII Music</button>
+
+    <!-- Footer -->
+    <footer>
+        <h2>WWII Image Gallery</h2>
+        <div class="footer-gallery">
+            <img src="ww2_1.jpg" alt="WWII Image 1">
+            <img src="ww2_2.jpg" alt="WWII Image 2">
+            <img src="ww2_3.jpg" alt="WWII Image 3">
+            <img src="ww2_4.jpg" alt="WWII Image 4">
+            <img src="ww2_5.jpg" alt="WWII Image 5">
+            <img src="ww2_6.jpg" alt="WWII Image 6">
+            <img src="ww2_7.jpg" alt="WWII Image 7">
+            <img src="ww2_8.jpg" alt="WWII Image 8">
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let slideIndex = 0;
+        let musicPlaying = false;
+        const slides = document.querySelectorAll(".slide");
+        const music = new Audio('ww2.mp3');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.style.display = index === slideIndex ? 'block' : 'none';
+            });
+        }
+
+       
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlides();
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+            } else {
+                music.play();
+                musicPlaying = true;
+            }
+        }
+
+        // Initialize slideshow
+        showSlides();
+
+        // Slideshow automatic change
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+
+</html>

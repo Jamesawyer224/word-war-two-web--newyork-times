@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World War II Experience</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f4f4f4;
+            overflow: hidden;
+        }
+
+        /* Fullscreen Intro */
+        #intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            text-align: center;
+            background: url('ww2_1.jpg') no-repeat center center/cover;
+            position: relative;
+        }
+
+        #intro h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #intro button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #intro button:hover {
+            background-color: #555;
+        }
+
+        #intro .music-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #intro .music-controls button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #intro .music-controls button:hover {
+            background-color: #666;
+        }
+
+        /* Main Content */
+        #content {
+            display: none;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #0a0a0a;
+        }
+
+        #content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #d4af37;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        #content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1.2rem;
+        }
+
+        /* Adolf Hitler Section */
+        #hitler-section {
+            background-color: #333;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        #hitler-section h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #d9534f;
+        }
+
+        #hitler-section p {
+            font-size: 1.1rem;
+        }
+
+        /* Image Gallery View */
+        #gallery {
+            display: none;
+            padding: 20px;
+            height: 100vh;
+            background-color: #0a0a0a;
+        }
+
+        #gallery h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #d4af37;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-slider {
+            display: flex;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .gallery-slider img {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-slider img:hover {
+            transform: scale(1.05);
+        }
+
+        .caption {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #d4af37;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        /* Transition Effects */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Intro Section -->
+    <div id="intro">
+        <div class="music-controls">
+            <button onclick="toggleMusic()">Deploy Soundtrack</button>
+        </div>
+        <h1>World War II</h1>
+        <button onclick="showContent()">Commence Operation</button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+        <h2>World War II: A Brief Overview</h2>
+        <p>
+            World War II was a global conflict that lasted from 1939 to 1945, involving most of the world's nations.
+            It was marked by significant events such as the invasion of Poland, the Battle of Britain, the attack on
+            Pearl Harbor, and the D-Day landings. The war ended with the unconditional surrender of the Axis powers
+            and had far-reaching consequences, including the establishment of the United Nations and the beginning of
+            the Cold War.
+        </p>
+
+        <div id="hitler-section">
+            <h3>Adolf Hitler: The Architect of Destruction</h3>
+            <p>
+                Adolf Hitler, the leader of Nazi Germany, was one of the most infamous figures in history. His aggressive
+                expansionist policies and extreme ideology led to the outbreak of World War II. Under his rule, millions
+                of people were persecuted, and the Holocaust, one of the most horrific genocides in history, took place.
+            </p>
+        </div>
+
+        <button class="back-button" onclick="showGallery()">View Wartime Images</button>
+    </div>
+
+    <!-- Image Gallery -->
+    <div id="gallery">
+        <h2>World War II Gallery</h2>
+        <div class="gallery-slider">
+            <img src="ww2_1.jpg" alt="WW2 Image 1">
+            <img src="ww2_2.jpg" alt="WW2 Image 2">
+            <img src="ww2_3.jpg" alt="WW2 Image 3">
+            <img src="ww2_4.jpg" alt="WW2 Image 4">
+            <img src="ww2_5.jpg" alt="WW2 Image 5">
+            <img src="ww2_6.jpg" alt="WW2 Image 6">
+            <img src="ww2_7.jpg" alt="WW2 Image 7">
+            <img src="ww2_8.jpg" alt="WW2 Image 8">
+        </div>
+        <div class="caption">Scroll through the gallery to witness the war's impact.</div>
+        <button class="back-button" onclick="showContent()">Return to Mission Brief</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" src="ww2.mp3" loop></audio>
+
+    <script>
+        // Function to toggle between intro and content
+        function showContent() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('content').classList.add('fade-in');
+        }
+
+        // Function to toggle between content and gallery
+        function showGallery() {
+            document.getElementById('content

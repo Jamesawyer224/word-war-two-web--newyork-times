@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World War II Interactive Experience</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            overflow-x: hidden;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            padding: 0 20px;
+            text-align: justify;
+        }
+
+        /* Cinematic Intro */
+        .intro {
+            position: relative;
+            height: 100vh;
+            background: url('https://example.com/ww2-background.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            animation: fadeIn 5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .intro-text {
+            font-size: 36px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* 3D Globe Section */
+        .globe-container {
+            margin: 40px auto;
+            text-align: center;
+            width: 100%;
+            height: 500px;
+            background-color: #000;
+        }
+
+        .globe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Music Controls */
+        .music-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .music-controls button {
+            background-color: #666;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .music-controls button:hover {
+            background-color: #888;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 1200px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: #333;
+        }
+
+        .timeline-event {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 60px;
+        }
+
+        .timeline-event h3 {
+            margin-bottom: 10px;
+        }
+
+        .timeline-event p {
+            margin: 0;
+        }
+
+        /* Document Viewer */
+        .document-viewer {
+            margin: 40px auto;
+            text-align: center;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .document-viewer img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        /* AR Experience */
+        .ar-experience {
+            margin: 40px auto;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .ar-button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .ar-button:hover {
+            background-color: #555;
+        }
+
+        .ar-qr {
+            margin-top: 20px;
+            max-width: 200px;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .toggle-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="toggle-container">
+        <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <!-- Cinematic Intro -->
+    <div class="intro">
+        <div class="intro-text">The World War II Experience</div>
+    </div>
+
+    <!-- 3D Globe Section -->
+    <div class="globe-container">
+        <h2>Explore the Globe</h2>
+        <div id="globe" class="globe"></div>
+    </div>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <button onclick="toggleMusic()">Toggle Music</button>
+    </div>
+
+    <!-- Interactive Timeline -->
+    <div class="timeline">
+        <div class="timeline-event">
+            <h3>1939: The Invasion of Poland</h3>
+            <p>The war begins as Germany invades Poland, sparking global conflict.</p>
+        </div>
+        <div class="timeline-event">
+            <h3>1941: Pearl Harbor Attack</h3>
+            <p>The United States enters the war after Japan's surprise attack on Pearl Harbor.</p>
+        </div>
+        <!-- Add more events as needed -->
+    </div>
+
+    <!-- Historical Document Viewer -->
+    <div class="document-viewer">
+        <h2>View Historical Documents</h2>
+        <img src="https://example.com/document-sample.jpg" alt="Historical Document">
+        <p>Explore authentic WWII documents, letters, and photos.</p>
+    </div>
+
+    <!-- AR Experience -->
+    <div class="ar-experience">
+        <h2>Augmented Reality Experience</h2>
+        <button class="ar-button" onclick="launchAR()">Launch AR Experience</button>
+        <img src="https://example.com/ar-qr-code.png" alt="AR QR Code" class="ar-qr">
+        <p>Scan the QR code with your mobile device to view 3D WWII artifacts in your space.</p>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Background Music Control
+        let music = new Audio('ww2.mp3');
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        // 3D Globe Initialization (Placeholder for actual implementation)
+        function initGlobe() {
+            // Initialize the 3D globe here using a library like Three.js or Globe.gl
+        }
+
+        window.onload = initGlobe;
+
+        // AR Experience Launch
+        function launchAR() {
+            alert("AR experience will be launched. This is just a placeholder.");
+            // Code to launch AR experience goes here...
+        }
+    </script>
+</body>
+
+</html>
